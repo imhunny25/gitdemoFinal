@@ -1,0 +1,141 @@
+<template>
+    <lightning-card>
+        <lightning-layout>
+            <lightning-layout-item size="5">
+                <template if:true={isListShow}>
+                    <lightning-layout>
+                        <lightning-layout-item size="9">
+                            <div class="slds-float_right">
+                                <!-- <lightning-combobox name="progress" value={value} type={comType}
+                                placeholder="Select" options={selectOptions}
+                                onchange={handleChange} class="combobox_width"></lightning-combobox> -->
+                                <div class="slds-form-element">
+                                    <div class="slds-combobox_container slds-combobox-addon_end slds-m-right_large">
+                                        <div
+                                            class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open">
+                                            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_group-right"
+                                                role="none">
+                                                <!--onfocus={handleSearchFocus}-->
+                                                <input type="search"
+                                                    class="slds-input slds-combobox__input slds-has-focus slds-combobox__input-value fieldNameComp input-min-width"
+                                                    aria-activedescendant="option0" aria-autocomplete="list"
+                                                    aria-controls="listbox-id-23" aria-expanded="true"
+                                                    aria-haspopup="listbox" autocomplete="off" role="combobox"
+                                                    placeholder="Search..." value={searchInput}
+                                                    onclick={handleFieldSearch} onchange={handleFieldSearch}
+                                                    onkeydown={handleFieldSearch} oninput={handleFieldSearch}
+                                                    onblur={handleSearchBlur} disabled={isInputDisabled}>
+
+                                                <div class="slds-input__icon-group slds-input__icon-group_right">
+                                                    <template if:true={chevrondown}>
+                                                        <button
+                                                            class="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
+                                                            title="Remove selected option" onclick={showDefaultList}
+                                                            onblur={handleSearchBlu}>
+                                                            <lightning-icon class="slds-col" align="right" vertical
+                                                                size="x-small"
+                                                                icon-name="utility:chevrondown"></lightning-icon>
+                                                            <span class="slds-assistive-text"></span>
+                                                        </button>
+                                                    </template>
+                                                    <template if:false={showClose}>
+                                                        <button
+                                                            class="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
+                                                            title="Remove selected option" onclick={clearSearchField}>
+                                                            <lightning-icon class="slds-col" align="right" vertical
+                                                                size="x-small"
+                                                                icon-name="utility:close"></lightning-icon>
+                                                            <span class="slds-assistive-text"></span>
+                                                        </button>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                            <template if:true={contacts}>
+                                                <template if:true={isfieldListLoadedSearch}>
+                                                    <div class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid"
+                                                        role="listbox">
+                                                        <template for:each={contacts} for:item="con">
+                                                            <ul class="slds-listbox slds-listbox_vertical"
+                                                                role="presentation" key={con.Id}>
+                                                                <li role="presentation" class="slds-listbox__item "
+                                                                    onchange={handlerChange} onclick={handlerChange}
+                                                                    data-name={con.Name}>
+                                                                    <div class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small"
+                                                                        role="option">
+                                                                        <span
+                                                                            class="slds-media__figure slds-listbox__option-icon"></span>
+                                                                        <span class="slds-media__body">
+                                                                            <span class="slds-truncate"
+                                                                                data-name={con.Name}>
+                                                                                {con.Name}
+                                                                            </span>
+                                                                        </span>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </template>
+                                                    </div>
+                                                </template>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="3">
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_3-of-12">
+                                    <lightning-icon
+                                        class="blue-icon slds-p-top_x-small slds-float_right slds-p-right_x-small"
+                                        icon-name="utility:check" alternative-text="Preview" title="Preview"
+                                        size=" x-small"></lightning-icon>
+                                </div>
+                                <div class="slds-col slds-size_5-of-12">
+                                    <h1 class="assign_color slds-p-top_x-small">Assign</h1>
+                                </div>
+
+                                <div class="slds-col slds-size_4-of-12">
+                                    <template if:false={HideDoted}>
+                                        <span class="hidedotedButton"> <button
+                                                onclick={HideDotedHandler}>Cancel</button></span>
+                                    </template>
+                                </div>
+                            </div>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </template>
+            </lightning-layout-item>
+            <lightning-layout-item size="2">
+                <template if:true={buttonDoted}>
+                    <div class="dropdown">
+
+                        <lightning-button-icon icon-name="utility:threedots" alternative-text="Bookmark"
+                            class="slds-m-left_xx-small dropbtn" title="Bookmark" onclick={showdrop}
+                            onblur={showDropBlur}> </lightning-button-icon>
+
+                        <template if:true={showDropDown}>
+                            <div class="dropdown-content">
+                                <ul role="menu">
+                                    <li role="menuitem"><button onclick={isShowListHandler}>Re-assign</button></li>
+                                </ul>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </lightning-layout-item>
+            <lightning-layout-item size="4">
+                
+                <lightning-card title="Dropdown">
+                    <button onclick={handlerClick}>click here</button>
+                    <select class="slds-select">
+                        <template for:each={tempDayOfWeek} for:item="tempDayOfWeek">
+                            <option key={tempDayOfWeek.label} value={tempDayOfWeek.value} selected={tempDayOfWeek.isSelected}>{tempDayOfWeek.label}</option>
+                        </template>
+                    </select>
+            
+                </lightning-card>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

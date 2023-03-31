@@ -1,0 +1,95 @@
+<template>
+    <lightning-card title="">
+        <lightning-layout>
+            <lightning-layout-item size="2">
+               <div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg" class="logo_size" />
+               </div>
+            </lightning-layout-item>
+
+        <lightning-layout-item size="9">
+            <div class="header_list">
+                <ul class="slds-list_horizontal">
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">HOME</button>
+                            <div class="dropdown-content">
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                            </div>
+                        </div>
+                    </li>
+                        <li>
+                            <div class="dropdown">
+                                <button class="dropbtn">ABOUT</button>
+                                <div class="dropdown-content">
+                                    <a href="#">About Me</a>
+                                    <a href="#">About Company</a>
+                                    <a href="#">About Customers</a>
+                                </div>
+                            </div>
+                          </li>
+                        <li>
+                            <div class="dropdown">
+                                <button class="dropbtn">PROJECT</button>
+                                <div class="dropdown-content">
+                                    <a href="#">Persnol Project</a>
+                                    <a href="#">Company Project</a>
+                                    <a href="#">Freelance Project</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                          <a href="#">PROFILE</a>
+                        </li>
+                        
+                      </ul>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="1">
+                <div class="header_list1">
+                    <ul class="slds-list_horizontal">
+                        <li>
+                            <span class="slds-avatar slds-avatar_circle " style="border: 1px solid #00a1e0;">
+                                <img alt="Person name"  src={imgUrl} title="Person name" />
+                              </span>
+                          </li>
+                        </ul>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+<br/>
+        <lightning-layout>
+            <lightning-layout-item size="5">
+                <div class="eventImage"> 
+                  
+                    <img src={imgUrl} />
+                </div>
+                
+            </lightning-layout-item>
+
+            <lightning-layout-item size="6">
+                <div class="eventImage1"> 
+                    <h1> Event In Jaipur</h1>
+                    <h2>What is Lorem Ipsum?</h2>
+                   <p>
+                
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                   </p>
+                </div>
+                
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <lightning-layout>
+            <lightning-layout-item size="1"></lightning-layout-item>
+            <lightning-layout-item size="10">
+                <c-image-silder-gallary></c-image-silder-gallary>
+
+            </lightning-layout-item>
+            <lightning-layout-item size="1"></lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+   
+</template>

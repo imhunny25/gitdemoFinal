@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="LWC Life Cycle">
+        <h1>{property}</h1>
+    </lightning-card>
+    <lightning-card title="Lwc Button">
+        <lightning-button label="click here"></lightning-button>
+       
+        
+            <template for:each={data} for:item="acc">
+                <p key={acc.Id}>{acc.Id}{acc.FirstName}</p>
+            </template>
+        
+    </lightning-card>
+</template>

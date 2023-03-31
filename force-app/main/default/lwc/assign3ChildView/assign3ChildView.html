@@ -1,0 +1,31 @@
+<template>
+        <template if:true={isStageView}>
+          <lightning-card >
+            <template if:true={pickValue}>
+              <template for:each={pickValue} for:item='st'>
+               
+                <div key={st} class="slds-grid slds-gutters contant_display">
+                  <div data-id={st} class="slds-col slds-size_3-of-3 width_of_div" data-key={st} data-role="drop-target" ondrop ={handleDrop} ondragenter={handleDragEnter} ondragover={handleDragOver} ondragleave={handleDragLeave} >
+                    <article class="slds-card card_style slds-gutters">
+                        <header class="slds-media slds-media_center slds-has-flexi-truncate header_background">
+                          <div class="slds-media__body header_background">
+                            <h2 class="slds-card__header-title">
+                                <span>{st}</span>
+                            </h2>
+                          </div>
+                        </header>
+                        <div class="slds-card__body slds-card__body_inner border_spiceal" >
+                          <template if:true={mapData}>
+                            <template for:each={mapData} for:item="mapKey">
+                                <c-assign3-get-data ongettaskid={handleTaskId} key={mapKey.key} key-child={mapKey.key} list-opp={mapKey.value} filter-type={st} is-stage={isStageView} ></c-assign3-get-data>
+                            </template>
+                          </template>
+                        </div>
+                    </article>
+                  </div>
+                </div>
+             </template>
+            </template>
+          </lightning-card>
+        </template>
+</template>

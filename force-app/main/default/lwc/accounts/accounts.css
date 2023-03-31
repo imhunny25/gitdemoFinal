@@ -1,0 +1,47 @@
+.account_holder h2{
+   font-size: 0.8125rem;
+   color: #444444;
+}
+
+.account_holder h1{
+   font-size: 18px;
+   /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+   color: #181818;
+   padding-top: 0px;
+   margin-top: 0px;
+   font-weight: 700;
+ }
+
+ .blue_icon{
+    --sds-c-icon-color-foreground-default: #0176d3;
+   
+ }
+
+.second_cat h1{
+    color: #444444;
+ }
+
+ .second_cat span{
+    color: #1b96ff;
+ }
+
+ .flex-container {
+   display: flex;
+  /* flex-wrap: nowrap;*/
+  justify-content: space-around; 
+   background-color: DodgerBlue;
+ }
+
+ .flex-container > div{
+   background-color: #f1f1f1;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+ 
+ }
+ .custom-box {
+   background-color: #f4f6f9;
+}

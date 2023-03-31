@@ -1,0 +1,217 @@
+<template >
+   
+<div class="slds-grid slds-gutters">
+    <div class="slds-col">
+        <div class="Button_align">
+            <div>  <button class="slds-button slds-button_brand" onclick={handleClick}>Accounts</button></div>
+            <div>  <button class="slds-button slds-button_brand Button_margin">Contacts</button></div>
+            <div>  <button class="slds-button slds-button_brand Button_margin">Opportunities</button></div>
+        </div>
+        
+    </div>
+    <div class="slds-col">
+        <!-- <c-total-account></c-total-account> -->
+        <article class="slds-card">
+            <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+            <div class="slds-media__figure">
+            <span class="slds-icon_container slds-icon-standard-account" title="account">
+            <svg class="slds-icon slds-icon_small" aria-hidden="true">
+            <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
+            </svg>
+            <span class="slds-assistive-text">account</span>
+            </span>
+            </div>
+            <div class="slds-media__body">
+            <h2 class="slds-card__header-title">
+            <a href="#" class="slds-card__header-link slds-truncate" title="Accounts">
+            <span>Accounts</span>
+            </a>
+            </h2>
+            </div>
+            </header>
+            </div>
+            <div class="slds-card__body slds-card__body_inner">
+                <h3> Total Accounts :</h3>
+            </div>
+            
+            </article>
+    </div>
+
+    <div class="slds-col">
+      <!-- <c-total-contact></c-total-contact>  -->
+      <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__figure">
+        <span class="slds-icon_container slds-icon-standard-account" title="account">
+        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+        <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
+        </svg>
+        <span class="slds-assistive-text">contacts</span>
+        </span>
+        </div>
+        <div class="slds-media__body">
+        <h2 class="slds-card__header-title">
+        <a href="#" class="slds-card__header-link slds-truncate" title="Accounts">
+        <span>Contacts</span>
+        </a>
+        </h2>
+        </div>
+        </header>
+        </div>
+        <div class="slds-card__body slds-card__body_inner">
+            <h3> Total Contacts :</h3>
+        </div>
+        
+        </article>
+    </div>
+
+    <div class="slds-col">
+      <!-- <c-total-opportunity></c-total-opportunity>  -->
+      <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__figure">
+        <span class="slds-icon_container slds-icon-standard-account" title="account">
+        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+        <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
+        </svg>
+        <span class="slds-assistive-text">account</span>
+        </span>
+        </div>
+        <div class="slds-media__body">
+        <h2 class="slds-card__header-title">
+        <a href="#" class="slds-card__header-link slds-truncate" title="Accounts">
+        <span>Opportunities</span>
+        </a>
+        </h2>
+        </div>
+        </header>
+        </div>
+        <div class="slds-card__body slds-card__body_inner">
+            <h3> Total Opportunities :</h3>
+        </div>
+        
+        </article>
+    </div>
+  </div>
+
+ 
+    <div class="Button_right">
+            <div class="slds-m-top_medium slds-m-bottom_x-large Button_right">
+                <!-- Button group: simple buttons -->
+                <lightning-button-group>
+                    <lightning-button label="Edit"
+                    title="Open popup" onclick={showModalBox}></lightning-button>
+
+                     <!-- modal start -->      
+                        <template if:true={isShowModal}>
+<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+<div class="slds-modal__container">
+<!-- modal header start -->
+  <header class="slds-modal__header">
+     <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
+        <lightning-icon icon-name="utility:close"
+           alternative-text="close"
+           variant="inverse"
+           size="small" ></lightning-icon>
+        <span class="slds-assistive-text">Close</span>
+     </button>
+     <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Welcome in Apex Hours</h2>
+  </header>
+
+  <!-- modal body start -->
+  <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+        <p>Modal/Popup in Lightning Web Component (LWC) Demo</p>
+  </div>
+
+  <!-- modal footer start-->
+  <footer class="slds-modal__footer">
+     <button class="slds-button slds-button_neutral" onclick={hideModalBox}>Cancel</button>
+  </footer>
+
+</div>
+</section>
+<div class="slds-backdrop slds-backdrop_open"></div>
+                        </template>
+                     <!-- modal end -->
+
+                    <lightning-button label="New" title="Open popup" onclick={showModalBox}></lightning-button>
+
+                                             <!-- modal start -->      
+                                                <template if:true={isShowModal}>
+                        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container">
+                        <!-- modal header start -->
+                          <header class="slds-modal__header">
+                             <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
+                                <lightning-icon icon-name="utility:close"
+                                   alternative-text="close"
+                                   variant="inverse"
+                                   size="small" ></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                             </button>
+                             <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">Welcome in Apex Hours</h2>
+                          </header>
+                        
+                          <!-- modal body start -->
+                          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                                <p>Modal/Popup in Lightning Web Component (LWC) Demo</p>
+                          </div>
+                        
+                          <!-- modal footer start-->
+                          <footer class="slds-modal__footer">
+                             <button class="slds-button slds-button_neutral" onclick={hideModalBox}>Cancel</button>
+                          </footer>
+                        
+                        </div>
+                        </section>
+                        <div class="slds-backdrop slds-backdrop_open"></div>
+                                                </template>
+                                             <!-- modal end -->
+
+
+                    <lightning-button label="Delete" title="Open popup" onclick={showModalBox}></lightning-button>
+
+                      <!-- modal start -->      
+                      <template if:true={isShowModal}>
+                        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container">
+                        <!-- modal header start -->
+                          <header class="slds-modal__header">
+                             <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
+                                <lightning-icon icon-name="utility:close"
+                                   alternative-text="close"
+                                   variant="inverse"
+                                   size="small" ></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                             </button>
+                             <h2 id="modal-heading-03" class="slds-text-heading_medium slds-hyphenate">Welcome in Apex Hours</h2>
+                          </header>
+                        
+                          <!-- modal body start -->
+                          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-3">
+                                <p>Modal/Popup in Lightning Web Component (LWC) Demo</p>
+                          </div>
+                        
+                          <!-- modal footer start-->
+                          <footer class="slds-modal__footer">
+                             <button class="slds-button slds-button_neutral" onclick={hideModalBox}>Cancel</button>
+                          </footer>
+                        
+                        </div>
+                        </section>
+                        <div class="slds-backdrop slds-backdrop_open"></div>
+                                                </template>
+                                             <!-- modal end -->
+                </lightning-button-group>
+            </div>
+   
+    </div>
+    <div class="slds-col Table_width">
+      <template if:true={showNewAcreComponent}>
+        <c-total-account class="Table_width"></c-total-account>
+      </template>
+    </div>
+</template>

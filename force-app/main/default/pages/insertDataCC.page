@@ -1,0 +1,32 @@
+<apex:page tabStyle="StudentDetail__c" controller="Storeclass">
+    <apex:form >
+        <apex:PageBlock title=" Trainers Details">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="SAVE" action="{!insert_record}"/>
+                <apex:commandButton value="CANCLE" action="{!cancel}"/>
+            </apex:pageBlockButtons>
+            
+       <apex:pageBlockSection title="Trainer Details">
+           <apex:pageBlockSectionItem >
+               <apex:outputLabel value="Trainer Name"/ >
+               <apex:inputText value="{!tname}"/>
+           </apex:pageBlockSectionItem><br/>
+           
+           <apex:pageBlockSectionItem >
+               <apex:outputLabel value="Subject"/ >
+               <apex:inputText value="{!tsubject}"/>
+           </apex:pageBlockSectionItem><br/>
+           
+           <apex:pageBlockSectionItem >
+               <apex:outputLabel value="Salary"/ >
+               <apex:inputText value="{!tsalary}" />
+           </apex:pageBlockSectionItem><br/>
+           
+           <apex:pageBlockSectionItem >
+               <apex:outputLabel value="Phone Number"/ >
+               <apex:inputText value="{!tphone}"/>
+           </apex:pageBlockSectionItem>
+       </apex:pageBlockSection>
+        </apex:PageBlock>
+    </apex:form>
+</apex:page>

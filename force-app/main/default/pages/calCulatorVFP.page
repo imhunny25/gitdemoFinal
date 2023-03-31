@@ -1,0 +1,33 @@
+<apex:page tabStyle="employee__c" controller="Arithmetic_Class" >
+  <apex:form >
+      <apex:PageBlock title="Arithmetic Operations">
+          <apex:pageBlockButtons >
+          <apex:commandButton value="ADDITION" action="{!addtion}"/>
+          <apex:commandButton VALUE="SUBSTRACTION" action="{!subtraction}"/>
+          <apex:commandButton VALUE="DIVISION" action="{!divison}"/>
+          <apex:commandButton VALue="MUTIPLICATION" action="{!multiplication}"/>
+          <apex:commandButton VALue="REMAINDER" action="{!remainder}"/>
+          </apex:pageBlockButtons>
+          
+          <apex:pageBlockSection title="Arithmetic Operations">
+          <apex:pageBlockSectionItem >
+          <apex:outputLabel value="First Number"/>
+          <apex:inputText value="{!num1}" />
+          </apex:pageBlockSectionItem><br/>
+          
+          <apex:pageBlockSectionItem >
+          <apex:outputLabel value="Second Number"/>
+          <apex:inputText value="{!num2}" />
+          </apex:pageBlockSectionItem><br/>
+          
+          
+           <apex:pageBlockSectionItem >
+          <apex:outputLabel value="Result"/>
+          <apex:inputText value="{!res}" />
+          </apex:pageBlockSectionItem>
+          
+          
+          </apex:pageBlockSection>
+      </apex:PageBlock>
+  </apex:form>
+</apex:page>

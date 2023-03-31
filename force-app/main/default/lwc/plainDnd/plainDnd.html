@@ -1,0 +1,18 @@
+<template>
+    <div class="container-drag slds-text-heading_medium slds-align_absolute-center">
+        Plain Drag & Drop Sample
+    </div>
+    <lightning-layout>
+    	<lightning-layout-item padding="around-small">
+            <c-plain-dnd-list tasklist={leftTasks} category="wip" onlistitemdrag={handleListItemDrag} 
+            onitemdrop={handleItemDrop}>
+            </c-plain-dnd-list>
+        </lightning-layout-item>
+    
+        <lightning-layout-item padding="around-small">
+            <c-plain-dnd-list tasklist={rightTasks} category="complete" onlistitemdrag={handleListItemDrag}
+            onitemdrop={handleItemDrop}>
+            </c-plain-dnd-list>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

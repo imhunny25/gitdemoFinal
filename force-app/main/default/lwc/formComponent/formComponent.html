@@ -1,0 +1,577 @@
+<template>
+    <lightning-button label="New" title="Open popup" onclick={showModalBox}></lightning-button>
+    <lightning-button label="Edit" title="Open popup" onclick={showEditAccount}></lightning-button>
+    <lightning-button label="Delete" title="Open popup" onclick={DeleteAccount}></lightning-button>
+
+ <!-- modal start -->      
+<template if:true={isShowAccount}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+                    <!-- modal header start -->
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
+                            <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <div class="slds-media__body slds-align_absolute-center">
+                            <h2 class="slds-card__header-title header_heading">
+                                <a href="#" class="slds-card__header-link slds-truncate" title="Accounts">
+                                    <span>{header}</span>
+                                </a>
+                            </h2>
+                        </div>
+                        <div class="slds-media__body">
+                            <h2 class="slds-card__header-title account_information">
+                                    <span>{subheader}</span>
+                            </h2>
+                        </div>
+                    </header>
+
+                <!-- modal body start -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col">
+                       
+                        </div>
+                                        <div class="slds-col">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label labelcss" for="text-input-id-56">
+                                                    <abbr class="slds-required" title="required">* </abbr>{lable_name}</label>
+                                                        <div class="slds-form-element__control">
+                                                        <input type="text" id="text-input-id-56" value={accName} onchange={handle_Account_Name} placeholder={placeholder_accName} required="" class="slds-input input_width" />
+                                                        </div>
+                                            </div>
+                        
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label labelcss" for="text-input-id-56">{lable_number}</label>
+                                                        <div class="slds-form-element__control">
+                                                        <input type="text" id="text-input-id-57" value={accNumber} onchange={handle_Account_Number} placeholder={placeholder_accNumber} required="" class="slds-input input_width" />
+                                                        </div>
+                                            </div>
+                        
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label labelcss" for="text-input-id-56">{label_email}</label>
+                                                        <div class="slds-form-element__control">
+                                                        <input type="text" id="text-input-id-58" value={accEmail} onchange={handle_Account_Email} placeholder="Email" required="" class="slds-input input_width" />
+                                                        </div>
+                                            </div>
+                                        </div>
+                    
+                                        <div class="slds-col">
+                                            <div class="slds-form-element">
+                                                <!-- <label class="slds-form-element__label labelcss" for="text-input-id-56">
+                                                     Rating</label> -->
+                                                        <div class="slds-form-element__control combox">
+                                                        <!-- <input type="text" id="text-input-id-59" value={accRating} onchange={handle_Account_Rating} placeholder="Rating" required="" class="slds-input input_width" /> -->
+                                                        <lightning-combobox
+                                                        name="progress"
+                                                        label={label_rating}
+                                                        value={value}
+                                                        placeholder="Select Progress"
+                                                        options={options}
+                                                        onchange={Ratinghandle} ></lightning-combobox>
+                                                        </div>
+                                            </div>
+                        
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label labelcss" for="text-input-id-56">{label_phone}</label>
+                                                        <div class="slds-form-element__control">
+                                                        <input type="text" id="text-input-id-60" value={accPhone} onchange={handle_Account_Phone} placeholder="Phone Number" required="" class="slds-input input_width" />
+                                                        </div>
+                                            </div>
+                        
+                                            <div class="slds-form-element">
+                                                <!-- <label class="slds-form-element__label labelcss" for="text-input-id-56">Description</label> -->
+                                                        <div class="slds-form-element__control">
+                                                            <!-- <textarea id="textarea-id-01" value={textValue} placeholder="Placeholder text…" class="slds-textarea"></textarea> -->
+                                                            <lightning-textarea class="textarea_margin"
+                                                            name="input1" 
+                                                            label={label_description} 
+                                                            value={textValue}
+                                                            onchange={description_handler}
+                                                        ></lightning-textarea>
+                                                        </div>
+                                            </div>
+                                        </div>
+                                    
+                        <div class="slds-col">
+                      
+                        </div>
+                        </div>
+                    
+                        <div class="slds-grid slds-gutters button_div_margin">
+                                    <div class="slds-col button_div">
+                                        <button class="slds-button slds-button_brand button_save" onclick={hideModalBox}>Cancel</button>
+                                    </div>
+                                    <div class="slds-col">
+                                        <button class="slds-button slds-button_brand button_save" onclick={handleSaveClick}>Save</button>
+                                    </div>
+                        </div>
+                </div>
+
+                             <!-- modal footer start-->
+                            <footer class="slds-modal__footer">
+                                <button class="slds-button slds-button_neutral" onclick={hideModalBox}>Cancel</button>
+                            </footer>
+
+        </div>
+    </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+
+<template if:true={isShowOpportunity}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+                <!-- modal header start -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
+                        <lightning-icon icon-name="utility:close"
+                        alternative-text="close"
+                        variant="inverse"
+                        size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <div class="slds-media__body slds-align_absolute-center">
+                        <h2 class="slds-card__header-title header_heading">
+                            <a href="#" class="slds-card__header-link slds-truncate" title="Accounts">
+                                <span>New Opportunity</span>
+                            </a>
+                        </h2>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="slds-card__header-title account_information">
+                                <span>Opportunity Information</span>
+                        </h2>
+                    </div>
+                </header>
+
+                <!-- modal body start -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-11">
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col"></div>
+                        <div class="slds-col">
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label labelcss" for="text-input-id-56">
+                                <abbr class="slds-required" title="required">* </abbr>Opportunity Name</label>
+                                <div class="slds-form-element__control">
+                                <input type="text" id="text-input-id-12" value={accName} onchange={handle_Account_Name} placeholder=" Name" required="" class="slds-input input_width validate"  />
+                                </div>
+                            </div>
+        
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label labelcss" for="text-input-id-56">
+                                    <abbr class="slds-required" title="required">* </abbr>Close Date
+                                </label>
+                                <div class="slds-form-element__control">
+                                    <input type="text" id="text-input-id-13" value="10/19/2022" onfocus={handle_Account_Number} placeholder=" Account Number" required="" class="slds-input input_width validate" />
+                                </div>
+                            </div>
+        
+                            <div class="slds-form-element">
+                                    <div class="slds-form-element__control combox">
+                                    <!-- <input type="text" id="text-input-id-59" value={accRating} onchange={handle_Account_Rating} placeholder="Rating" required="" class="slds-input input_width" /> -->
+                                    <lightning-combobox
+                                    class="validate"
+                                    name="progress"
+                                    label="Stage"
+                                    required="*"
+                                    value={value}
+                                    placeholder="Stage"
+                                    options={optionsOpp}
+                                    onchange={Ratinghandle} ></lightning-combobox>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="slds-col">
+                            <div class="slds-form-element">
+                                
+                                        <div class="slds-form-element__control combox">
+                                            <label class="slds-form-element__label " for="text-input-id-56">
+                                                Amount</label>
+                                        <input type="text" id="text-input-id-59" value={oppAmout} onchange={handle_Amount} placeholder="Amount" required="" class="slds-input input_width" />
+                                       
+                                        </div>
+                            </div>
+        
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label labelcss" for="text-input-id-56">Probability (%)</label>
+                                        <div class="slds-form-element__control">
+                                        <input type="text" id="text-input-id-15" value={accPhone} onchange={handle_Account_Phone} placeholder="Probability" required="" class="slds-input input_width" />
+                                        </div>
+                            </div>
+        
+                            <div class="slds-form-element">
+                                <!-- <label class="slds-form-element__label labelcss" for="text-input-id-56">Description</label> -->
+                                        <div class="slds-form-element__control">
+                                            <!-- <textarea id="textarea-id-01" value={textValue} placeholder="Placeholder text…" class="slds-textarea"></textarea> -->
+                                            <lightning-textarea class="textarea_margin"
+                                            name="input1" 
+                                            label="Description" 
+                                            value={textValue}
+                                            onchange={description_handler}
+                                        ></lightning-textarea>
+                                        </div>
+                            </div>
+                        </div>      
+                        <div class="slds-col">
+                    </div>
+                </div>
+                <div class="slds-grid slds-gutters button_div_margin">
+                            <div class="slds-col button_div">
+                                <button class="slds-button slds-button_brand button_save" onclick={hideModalBox}>Cancel</button>
+                            </div>
+                            <div class="slds-col">
+                                <button class="slds-button slds-button_brand button_save" onclick={handleSaveClick}>Save</button>
+                            </div>
+                </div>
+            </div>
+                <!-- modal footer start-->
+            <footer class="slds-modal__footer">
+                <button class="slds-button slds-button_neutral" onclick={hideModalBox}>Cancel</button>
+            </footer>
+        </div>
+    </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+
+<template if:true={isShowAccountEdit}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+                    <!-- modal header start -->
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBoxEdit}>
+                            <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <div class="slds-media__body">
+                            <h2 class="slds-card__header-title header_heading">
+                                <a href="#" class="slds-card__header-link slds-truncate" title="Accounts">
+                                    <span>Edit Account</span>
+                                </a>
+                            </h2>
+                        </div>
+                        <div class="slds-media__body slds-align_absolute-center">
+                            <h2 class="slds-card__header-title">
+                                    <span>Account Information</span>
+                            </h2>
+                        </div>
+                    </header>
+
+                <!-- modal body start -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col">
+                        </div>
+                                        <div class="slds-col">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label labelcss" for="text-input-id-56">
+                                                    <abbr class="slds-required" title="required">* </abbr>Account Name</label>
+                                                        <div class="slds-form-element__control">
+                                                        <input type="text" id="text-input-id-71" value={accountName} onchange={accountNameField} placeholder=" Account Name" required="" class="slds-input input_width" />
+                                                        </div>
+                                            </div>
+                        
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label labelcss" for="text-input-id-56">Account Number</label>
+                                                        <div class="slds-form-element__control">
+                                                        <input type="text" id="text-input-id-72" value={accountNumber} onchange={accountNumberField} placeholder=" Account Number" required="" class="slds-input input_width" />
+                                                        </div>
+                                            </div>
+                        
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label labelcss" for="text-input-id-56">Email</label>
+                                                        <div class="slds-form-element__control">
+                                                        <input type="text" id="text-input-id-73" value={accountEmail} onchange={accountEmailField} placeholder="Email" required="" class="slds-input input_width" />
+                                                        </div>
+                                            </div>
+                                        </div>
+                    
+                                        <div class="slds-col">
+                                            <div class="slds-form-element">
+                                                <!-- <label class="slds-form-element__label labelcss" for="text-input-id-56">
+                                                     Rating</label>
+                                                        <div class="slds-form-element__control"> -->
+                                                        <!-- <input type="text" id="text-input-id-74" value={accountRating} onchange={accountRatingField} placeholder="Rating" required="" class="slds-input input_width" /> -->
+                                                        <lightning-combobox
+                                                        name="progress"
+                                                        label='Rating'
+                                                        value={accountRating}
+                                                        placeholder="Select Progress"
+                                                        options={options}
+                                                        onchange={Ratinghandle_Field} ></lightning-combobox>
+                                                    <!-- </div> -->
+                                            </div>
+                        
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label labelcss" for="text-input-id-56">Phone Number</label>
+                                                        <div class="slds-form-element__control">
+                                                        <input type="text" id="text-input-id-75" value={accountPhone} onchange={accountPhoneField} placeholder="Phone Number" required="" class="slds-input input_width" />
+                                                        </div>
+                                            </div>
+                        
+                                            <div class="slds-form-element">
+                                                <!-- <label class="slds-form-element__label labelcss" for="text-input-id-56">Description</label> -->
+                                                        <div class="slds-form-element__control">
+                                                            <lightning-textarea name="input6" value={accountDescription} onchange={accountDescriptionField} label="Description" maxlength="60" class="textarea_margin"></lightning-textarea>
+                                                        </div>
+                                            </div>
+                                        </div>
+                                    
+                        <div class="slds-col">
+                      
+                        </div>
+                        </div>
+                    
+                        <div class="slds-grid slds-gutters button_div_margin">
+                                    <div class="slds-col button_div">
+                                        <button class="slds-button slds-button_brand button_save" onclick={handleUpdateRecord}>Save</button>
+                                    </div>
+                                    <div class="slds-col">
+                                        <button class="slds-button slds-button_brand button_save" onclick={hideModalBoxEdit}>Cancel</button>
+                                    </div>
+                        </div>
+                </div>
+
+                             <!-- modal footer start-->
+                            <footer class="slds-modal__footer">
+                                <button class="slds-button slds-button_neutral" onclick={hideModalBoxEdit}>Cancel</button>
+                            </footer>
+
+        </div>
+    </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+
+<template if:true={isShowContactEdit}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+                    <!-- modal header start -->
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBoxEdit}>
+                            <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <div class="slds-media__body">
+                            <h2 class="slds-card__header-title header_heading">
+                                <a href="#" class="slds-card__header-link slds-truncate" title="Contacts">
+                                    <span>Edit Contact</span>
+                                </a>
+                            </h2>
+                        </div>
+                        <div class="slds-media__body slds-align_absolute-center">
+                            <h2 class="slds-card__header-title">
+                                    <span>Contact Information</span>
+                            </h2>
+                        </div>
+                    </header>
+
+                <!-- modal body start -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-8">
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col">
+                        </div>
+                                        <div class="slds-col">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label labelcss" for="text-input-id-56">
+                                                     First Name</label>
+                                                        <div class="slds-form-element__control">
+                                                        <input type="text" id="text-input-id-81" value={contactFirstName} onchange={contactfirstNameField} placeholder=" First Name" required="First Name" class="slds-input input_width" />
+                                                        </div>
+                                            </div>
+                        
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label labelcss" for="text-input-id-56">
+                                                    <abbr class="slds-required" title="required">* </abbr>Last Name</label>
+                                                        <div class="slds-form-element__control">
+                                                        <input type="text" id="text-input-id-82" value={contactLastName} onchange={contaclastNameField} placeholder=" Account Number" required="" class="slds-input input_width" />
+                                                        </div>
+                                            </div>
+                        
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label labelcss" for="text-input-id-56">Email</label>
+                                                        <div class="slds-form-element__control">
+                                                        <input type="text" id="text-input-id-83" value={contactEmail} onchange={contactEmailField} placeholder="Email" required="" class="slds-input input_width" />
+                                                        </div>
+                                            </div>
+                                        </div>
+                    
+                                        <div class="slds-col">
+                                            <div class="slds-form-element">
+                                                <!-- <label class="slds-form-element__label labelcss" for="text-input-id-56">
+                                                     Rating</label>
+                                                        <div class="slds-form-element__control"> -->
+                                                        <!-- <input type="text" id="text-input-id-74" value={accountRating} onchange={accountRatingField} placeholder="Rating" required="" class="slds-input input_width" /> -->
+                                                        <lightning-combobox
+                                                        name="progress"
+                                                        label='Rating'
+                                                        value={contactRating}
+                                                        placeholder="Select Progress"
+                                                        options={options}
+                                                        onchange={contactRatingField} ></lightning-combobox>
+                                                    <!-- </div> -->
+                                            </div>
+                        
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label labelcss" for="text-input-id-56">Phone Number</label>
+                                                        <div class="slds-form-element__control">
+                                                        <input type="text" id="text-input-id-85" value={contactPhone} onchange={contactPhoneField} placeholder="Phone Number" required="" class="slds-input input_width" />
+                                                        </div>
+                                            </div>
+                        
+                                            <div class="slds-form-element">
+                                                <!-- <label class="slds-form-element__label labelcss" for="text-input-id-56">Description</label> -->
+                                                        <div class="slds-form-element__control">
+                                                            <lightning-textarea name="input6" value={contactDescription} onchange={contactDescriptionField} label="Description" maxlength="60" class="textarea_margin"></lightning-textarea>
+                                                        </div>
+                                            </div>
+                                        </div>
+                                    
+                        <div class="slds-col">
+                      
+                        </div>
+                        </div>
+                    
+                        <div class="slds-grid slds-gutters button_div_margin">
+                                    <div class="slds-col button_div">
+                                        <button class="slds-button slds-button_brand button_save" onclick={handleUpdateRecord}>Save</button>
+                                    </div>
+                                    <div class="slds-col">
+                                        <button class="slds-button slds-button_brand button_save" onclick={hideModalBoxEdit}>Cancel</button>
+                                    </div>
+                        </div>
+                </div>
+
+                             <!-- modal footer start-->
+                            <footer class="slds-modal__footer">
+                                <button class="slds-button slds-button_neutral" onclick={hideModalBoxEdit}>Cancel</button>
+                            </footer>
+
+        </div>
+    </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+
+<template if:true={isShowOpportunityEdit}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+                <!-- modal header start -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBoxEdit}>
+                        <lightning-icon icon-name="utility:close"
+                        alternative-text="close"
+                        variant="inverse"
+                        size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <div class="slds-media__body slds-align_absolute-center">
+                        <h2 class="slds-card__header-title header_heading">
+                            <a href="#" class="slds-card__header-link slds-truncate" title="Accounts">
+                                <span>Update Opportunity</span>
+                            </a>
+                        </h2>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="slds-card__header-title account_information">
+                                <span>Opportunity Information</span>
+                        </h2>
+                    </div>
+                </header>
+
+                <!-- modal body start -->
+                <div class="slds-modal__content slds-p-around_medium" >
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col"></div>
+                        <div class="slds-col">
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label labelcss" for="text-input-id-56">
+                                <abbr class="slds-required" title="required">* </abbr>Opportunity Name</label>
+                                <div class="slds-form-element__control">
+                                <input type="text" value={oppName} onchange={handler_opportunity_Name} placeholder=" Name" required="" class="slds-input input_width" />
+                                </div>
+                            </div>
+        
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label labelcss" for="text-input-id-56">
+                                    <abbr class="slds-required" title="required">* </abbr>Close Date
+                                </label>
+                                <div class="slds-form-element__control">
+                                    <input type="text"  value={closedateopp} onfocus={handler_opportunity_closedate} placeholder=" Account Number" required="" class="slds-input input_width" />
+                                </div>
+                            </div>
+        
+                            <div class="slds-form-element">
+                                    <div class="slds-form-element__control combox">
+                                    <!-- <input type="text" id="text-input-id-59" value={accRating} onchange={handle_Account_Rating} placeholder="Rating" required="" class="slds-input input_width" /> -->
+                                    <lightning-combobox
+                                    name="progress"
+                                    label="Stage"
+                                    required="*"
+                                    value={value}
+                                    placeholder="Stage"
+                                    options={optionsOppUpdate}
+                                    onchange={handler_opportunity_stage} ></lightning-combobox>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="slds-col">
+                            <div class="slds-form-element">
+                                
+                                        <div class="slds-form-element__control combox">
+                                            <label class="slds-form-element__label " for="text-input-id-56">
+                                                Amout</label>
+                                        <input type="text"  value={oppAmount} onchange={handler_opportunity_amount} placeholder="Amout" required="" class="slds-input input_width" />
+                                       
+                                        </div>
+                            </div>
+        
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label labelcss" for="text-input-id-56">Probability (%)</label>
+                                        <div class="slds-form-element__control">
+                                        <input type="text"  value={oppProbability} onchange={handler_opportunity_Probability} placeholder="Probability" required="" class="slds-input input_width" />
+                                        </div>
+                            </div>
+        
+                            <div class="slds-form-element">
+                                <!-- <label class="slds-form-element__label labelcss" for="text-input-id-56">Description</label> -->
+                                        <div class="slds-form-element__control">
+                                            <!-- <textarea id="textarea-id-01" value={textValue} placeholder="Placeholder text…" class="slds-textarea"></textarea> -->
+                                            <lightning-textarea class="textarea_margin"
+                                            name="input1" 
+                                            label="Description" 
+                                            value={oppDescription}
+                                            onchange={handler_opportunity_description}
+                                        ></lightning-textarea>
+                                        </div>
+                            </div>
+                        </div>      
+                        <div class="slds-col">
+                    </div>
+                </div>
+                <div class="slds-grid slds-gutters button_div_margin">
+                            <div class="slds-col button_div">
+                                <button class="slds-button slds-button_brand button_save" onclick={hideModalBoxEdit}>Cancel</button>
+                            </div>
+                            <div class="slds-col">
+                                <button class="slds-button slds-button_brand button_save" onclick={handleSaveClickOpp}>Save</button>
+                            </div>
+                </div>
+            </div>
+                <!-- modal footer start-->
+            <footer class="slds-modal__footer">
+                <button class="slds-button slds-button_neutral" onclick={hideModalBoxEdit}>Cancel</button>
+            </footer>
+        </div>
+    </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+
+</template>

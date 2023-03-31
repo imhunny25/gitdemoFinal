@@ -1,0 +1,86 @@
+<template>
+    <div class="myColor">
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-align_absolute-center">
+            <ul>
+                <li>
+                    <button class="slds-button slds-button_outline-brand button_style" onclick={showClickAccount}>Accounts</button>
+                </li>
+                <li>
+                    <button class="slds-button slds-button_outline-brand button_style" onclick={showClickContact}>Contacts</button>
+                </li>
+                <li>
+                    <button class="slds-button slds-button_outline-brand button_style" onclick={showClickOpportunity}>Opportunities</button>
+                </li>
+              </ul>
+        </div>
+        <div class="slds-col">
+            <article class="slds-card card_height_style">
+                <div class="slds-card__header">
+                  <div>
+                    <h1 class="heading_text"><b> Total Account :</b></h1>
+                  </div>
+                  <div>
+                    <h1 class="heading_text"> {totalAccount}</h1>
+                  </div>
+                </div>
+              </article>
+        </div>
+        <div class="slds-col">
+            <article class="slds-card card_height_style">
+                <div class="slds-card__header">
+                  <div>
+                    <h1 class="heading_text"> <b> Total Contact : </b></h1>
+                  </div>
+                  <div>
+                    <h1 class="heading_text"> {totalContact}</h1>
+                  </div>
+                </div>
+              </article>
+        </div>
+        <div class="slds-col">
+            <article class="slds-card card_height_style">
+                <div class="slds-card__header">
+                  <div>
+                    <h1 class="heading_text "> <b>Total Opportunities :</b></h1>
+                  </div>
+                  <div>
+                    <h1 class="heading_text"> {totalOpportunity}</h1>
+                  </div>
+                </div>
+              </article>
+        </div>
+    </div>
+
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_8-of-12">
+         
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12">
+            <div class="slds-button-group group_button" role="group">
+            <!-- child component new edit delete buttons  -->
+                <c-form-component onhandlerefresh={refreshHandle} onhandlerconrefresh={refreshContactHandle} isaccountnew={isAccount} iscontactnew={isContact} isopportunitynew={isOpportunitiy} totalselectrecord={totalSelectedRows}></c-form-component>
+            <!-- ----------------- -->
+              </div>
+        </div>
+      </div>
+
+      <div class="slds-grid slds-wrap data_top_margin">
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_3-of-12">
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_9-of-12">
+             <lightning-card title={display} icon-name="custom:custom10">
+                <div class="slds-m-around_medium">
+                    <div style="height:auto">
+                      <template if:true={isChildCall}>
+                        <!-- child component datatable -->
+                          <c-child-paginator tabledata={data} columns={columns} onselectrecord={selectRows}></c-child-paginator>  
+                        <!-- ------------------------ -->
+                      </template>
+                    </div>
+                </div>
+            </lightning-card> 
+        </div>
+      </div>
+</div>
+</template>

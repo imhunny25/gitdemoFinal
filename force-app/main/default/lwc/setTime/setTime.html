@@ -1,0 +1,208 @@
+<template>
+    <lightning-card>
+         <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_4-of-12">
+                <lightning-input type="checkbox" label="Test A" name="Test A"
+                onchange={handleTest}></lightning-input>
+            </div>
+            <div class="slds-col slds-size_4-of-12">
+                <lightning-input type="checkbox" label="Test B" name="Test B"
+                onchange={handleTest1} ></lightning-input>
+            </div>
+            <div class="slds-col slds-size_4-of-12">
+                <lightning-input type="checkbox" label="Test C" name="Test C"
+                onchange={handleTest2} ></lightning-input>
+            </div>
+        </div><br> 
+
+        <template if:true={sendRepeatSelected}>
+            <div class="slds-p-left_large slds-m-bottom_large" style="border-width: 4px;">
+                <div class="slds-p-bottom_small">
+                    <lightning-radio-group name="surveyfreqOptions" label="Recurrence Frequency" options={freqOptions}
+                        title="Recurrence Frequency" value={selectedRepeatValue} variant="label-hidden" type="button"
+                        onclick={handleRepeatFreqSelect} onchange={handleRepeatFreqSelect}></lightning-radio-group>
+                </div>
+                <template if:true={repeatWeeklySelected}>
+                    <div class="slds-grid slds-grid_vertical-align-center  slds-p-top_small">
+                        <div class="slds-box slds-box_x-small">
+                            <ul>
+                                <li> <lightning-input type="checkbox" label="Sunday" name="Sunday"
+                                        onchange={handleWeeklySelect0} class="Mycheck"></lightning-input></li>
+                                <li> <lightning-input type="checkbox" label="Monday" name="Monday"
+                                        onchange={handleWeeklySelect1} class="Mycheck"></lightning-input></li>
+                                <li> <lightning-input type="checkbox" label="Tuesday" name="Tuesday"
+                                        onchange={handleWeeklySelect2} class="Mycheck"></lightning-input></li>
+                                <li> <lightning-input type="checkbox" label="Wednesday" name="Wednesday"
+                                        onchange={handleWeeklySelect3} class="Mycheck"></lightning-input></li>
+                                <li> <lightning-input type="checkbox" label="Thursday" name="Thursday"
+                                        onchange={handleWeeklySelect4} class="Mycheck"></lightning-input></li>
+                                <li> <lightning-input type="checkbox" label="Friday" name="Friday"
+                                        onchange={handleWeeklySelect5} class="Mycheck"></lightning-input></li>
+                                <li> <lightning-input type="checkbox" label="Saturday" name="Saturday"
+                                        onchange={handleWeeklySelect6} class="Mycheck"></lightning-input></li>
+                            </ul>
+                        </div>
+                    </div>
+                </template>
+                <template if:true={repeatMonthlySelected}>
+
+                    <div class="slds-grid slds-p-bottom_large">
+                        <div class="slds-p-top_xx-small">
+                            <template if:true={clearCache}>
+                                <lightning-input type="radio" label="" title="Monthly" name="repeatmonthly"
+                                    value="repeatmonthlyfreq1" variant="label-hidden" onchange={repeatChange}
+                                    checked={repeatmonthlyfreq1}></lightning-input>
+                            </template>
+                        </div>
+                        <div class="slds-p-top_xx-small">
+                            On the
+                        </div>
+                        <div class="slds-p-horizontal_x-small" style="width: 100px;">
+                            <template if:true={clearCache}>
+                                <div>
+                                    <select class="slds-select dayCmp freq1" title="select day of the month" required
+                                        name="monthlyWeekNumberRecurOne" onchange={handlePicklistValueChange}
+                                        disabled={isRecur1Disabled}>
+                                        <option value=''> Day</option>
+
+                                        <template for:each={allDaysNumberOptions} for:item="allDays">
+                                            <option key={allDays} value={allDays} data-name="monthlyWeekNumberRecurOne">
+                                                {allDays}</option>
+                                        </template>
+                                    </select>
+                                </div>
+                            </template>
+                        </div>
+
+                        <!-- <div class="slds-p-top_xx-small">
+                        <abbr class="slds-required" title="required">*</abbr>of every
+                    </div> -->
+                        <!-- <div class="slds-p-horizontal_x-small" style="width: 100px;">
+                        <template if:true={clearCache}>
+                            <div>
+                                <select class="slds-select monthCmp freq1" title="specify interval in months" required
+                                    name="monthNumberRecurOne" onchange={handlePicklistValueChange}
+                                    disabled={isRecur1Disabled} >
+                                    <option value=''> Month</option>
+
+                                    <template for:each={allMonthsOptions}
+                                                for:item="allMonths">
+                                        <option key={allMonths} data-name="monthNumberRecurOne"
+                                            value={allMonths}>{allMonths}
+                                        </option>
+                                    </template>
+                                </select>
+                            </div>
+                        </template>
+                    </div> -->
+                        <!-- <div class="slds-p-top_xx-small">
+                        <abbr class="slds-required" title="required" >*</abbr>month(s)
+                    </div> -->
+                    </div>
+                    <div class="slds-grid freq2">
+                        <div class="slds-p-top_xx-small">
+                            <template if:true={clearCache}>
+                                <lightning-input type="radio" label="" name="repeatmonthly" value="repeatmonthlyfreq2"
+                                    variant="label-hidden" checked={repeatmonthlyfreq2} onchange={repeatChange}>
+                                </lightning-input>
+                            </template>
+                        </div>
+                        <div class="slds-p-top_xx-small">
+                            On the
+                        </div>
+                        <div class="slds-p-horizontal_x-small" style="width: 100px;">
+                            <template if:true={clearCache}>
+                                <div>
+                                    <select class="slds-select weekCmp freq2" title="select which week of the month"
+                                        required name="monthlyWeekNumberRecurTwo" onchange={handlePicklistValueChange}
+                                        disabled={isRecur2Disabled}>
+
+                                        <option value=''>Week</option>
+                                        <option data-name="monthlyWeekNumberRecurTwo" value="1st" data-dvalue="1">1st
+                                        </option>
+                                        <option data-name="monthlyWeekNumberRecurTwo" value="2nd" data-dvalue="2">2nd
+                                        </option>
+                                        <option data-name="monthlyWeekNumberRecurTwo" value="3rd" data-dvalue="3">3rd
+                                        </option>
+                                        <option data-name="monthlyWeekNumberRecurTwo" value="4th" data-dvalue="4">4th
+                                        </option>
+                                        <option data-name="monthlyWeekNumberRecurTwo" value="Last" data-dvalue="0">Last
+                                        </option>
+                                    </select>
+                                </div>
+                            </template>
+
+                        </div>
+                        <div class="slds-p-horizontal_x-small" style="width: 125px;">
+                            <template if:true={clearCache}>
+                                <div>
+                                    <select class="slds-select day2Cmp freq2" title="select which day of the week"
+                                        required name="dayNameRecurTwo" onchange={handlePicklistValueChange}
+                                        disabled={isRecur2Disabled}>
+
+                                        <option selected="selected" value="">Day
+                                        </option>
+                                        <option data-name="dayNameRecurTwo" value="sunday">Sunday</option>
+                                        <option data-name="dayNameRecurTwo" value="monday">Monday</option>
+                                        <option data-name="dayNameRecurTwo" value="tuesday">Tuesday</option>
+                                        <option data-name="dayNameRecurTwo" value="wednesday">Wednesday</option>
+                                        <option data-name="dayNameRecurTwo" value="thursday">Thursday</option>
+                                        <option data-name="dayNameRecurTwo" value="friday">Friday</option>
+                                        <option data-name="dayNameRecurTwo" value="saturday">Saturday</option>
+                                    </select>
+                                </div>
+                            </template>
+
+                        </div>
+                        <!-- <div class="slds-p-top_xx-small">
+                        <abbr class="slds-required" title="required" >*</abbr>of every
+                    </div> -->
+                        <!-- <div class="slds-p-horizontal_x-small" style="width: 100px;">
+                        <template if:true={clearCache}>
+                            <div>
+                                <select class="slds-select month2Cmp freq2" title="specify interval in months" required
+                                    name="monthlyMonthNumberRecurTwo" onchange={handlePicklistValueChange}
+                                    disabled={isRecur2Disabled} >
+                                   
+                                    <option value=''>Month</option>
+                                    <template for:each={allMonthsOptions}
+                                        for:item="allMonths">
+                                        <option key={allMonths} data-name="monthlyMonthNumberRecurTwo"
+                                            value={allMonths}>{allMonths}
+                                        </option>
+                                    </template>
+
+                                </select>
+                            </div>
+                        </template>
+
+                    </div>
+                    <div class="slds-p-top_xx-small">
+                        <abbr class="slds-required" title="required" >*</abbr>month(s)
+                    </div> -->
+                    </div>
+                </template>
+                <div class="slds-form-element__control">
+                    <div class="slds-form-element__row">
+                        <div class="slds-size_1-of-2">
+                            <lightning-input type="date" title="Start Date" name="startDate" value={startDate}
+                                label="Start Date" onchange={handleChangeStartDate} required></lightning-input>
+                        </div>
+                        <div class="slds-size_1-of-2">
+                            <lightning-input type="date" title="End Date" name="endDate" value={endDate}
+                            label="End Date" onchange={handleChangeEndtDate} required></lightning-input>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slds-p-top_x-small">
+                    <lightning-button variant="brand" label="Save" title="Primary action" onclick={handleClick}
+                        class="slds-m-left_x-small" disabled={isDisabled}></lightning-button>
+                    <lightning-button variant="brand" label="Cancel" title="Primary action" onclick={handleClickCancel}
+                        class="slds-m-left_x-small"></lightning-button>
+                </div>
+
+            </div>
+        </template>
+    </lightning-card>
+</template>

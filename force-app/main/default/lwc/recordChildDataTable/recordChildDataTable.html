@@ -1,0 +1,29 @@
+<template>
+    <lightning-datatable key-field="Id" data={tabledata} columns={columns} onrowselection={getSelectedRecords}> </lightning-datatable>
+    <lightning-layout class="top_margin_button">
+        <lightning-layout-item>
+            <template if:true={isShowPrev}>   
+            <lightning-button label="Previous" icon-name="utility:chevronleft" onclick={prevHandler}  ></lightning-button>
+            </template>
+            <template if:false={isShowPrev}>   
+                <lightning-button label="Previous" icon-name="utility:chevronleft" disabled="true"  ></lightning-button>
+                </template>
+
+        </lightning-layout-item>
+
+        <lightning-layout-item flexibility="grow" class="slds-align_absolute-center">
+            <p class="slds-m-around_medium">{startingRecord} to {endingRecord} of {totalRecordCount}.
+            page{page} of {totalPage}
+            </p> 
+        </lightning-layout-item>
+
+        <lightning-layout-item>
+            <template if:true={isShowNext}>
+            <lightning-button label="Next" icon-name="utility:chevronright" onclick={nextHandler} ></lightning-button>
+            </template>
+            <template if:false={isShowNext}>
+                <lightning-button label="Next" icon-name="utility:chevronright" disabled="true"></lightning-button>
+            </template>
+        </lightning-layout-item>
+</lightning-layout>
+</template>

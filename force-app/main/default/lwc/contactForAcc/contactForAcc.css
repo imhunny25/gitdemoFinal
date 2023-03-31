@@ -1,0 +1,25 @@
+*body{
+    padding: 0px;
+    margin: 0px;
+}
+.display{
+    display:inline-block;
+    text-align: justify;
+    /* content-visibility: auto; */
+}
+
+.widthOfDiv{
+    width: 1200px;
+}
+.outerDiv{
+    text-align: center;
+    content-visibility: auto;
+}
+.middle p{
+    color: #919191;
+    font-size: 14px;
+    font-weight: 400;
+}
+.middle p span{
+    color: #747474;
+}

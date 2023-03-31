@@ -1,0 +1,39 @@
+<template>
+    <template if:true={isSameStage} >
+        <template for:each={listOpp} for:item="opp">
+            
+            <div class="slds-card card_border card_height slds-p-around_small draggable" draggable="true" ondragstart={taskDragStart} ondragend={taskDragEnd} key={opp.Id} id={opp.Id} data-id={opp.Id} ondrag={itemDrag}>
+                <div class="slds-card__header slds-grid card_height">
+                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                        <div class="slds-media__body">
+                            <h2 class="slds-card__header-title">
+                                <lightning-formatted-url
+                                value= {opp.baseUrl}
+                                label= {opp.Name}
+                                target="_blank"
+                            ></lightning-formatted-url>  
+                            </h2>
+                        </div>
+                    </header>
+                </div>
+                <div class="slds-card__body slds-card__body_inner">
+                    <p class="peragrah_color"><span class="innerSpan">Id : </span>{opp.Id}</p>
+                    <p class="peragrah_color"><span class="innerSpan"> Stage Name : </span>{opp.StageName}</p>
+                    <p class="peragrah_color"><span class="innerSpan">Status : </span>{opp.Status}</p>
+                    <p class="peragrah_color"><span class="innerSpan">Type : </span>{opp.Type}</p>
+                    <p class="peragrah_color"><span class="innerSpan">Close Date : </span>{opp.closeDate}</p>
+                </div>
+            </div>
+        </template>
+    </template>
+</template>
+
+<!-- https://sfdcflight.blogspot.com/2020/05/salesforce-lwc-basic-drag-and-drop.html -->
+<!-- https://www.youtube.com/watch?v=39RP1yeVJFA -->
+<!-- https://niksdeveloper.com/salesforce/drag-and-drop-in-lwc-lightning-web-component/ -->
+<!-- https://niksdeveloper.com/salesforce/drag-and-drop-between-lwc-multiple/ -->
+<!-- https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API -->
+<!-- https://www.youtube.com/watch?v=hgQ4rDyU5fY -->
+<!-- https://www.santanuatonline.com/how-to-refresh-lightning-data-table-after-triggering-standard-eventnew-edit/ -->
+<!-- https://salesforce.stackexchange.com/questions/317092/select-child-component-in-lwc-when-it-is-present-multiple-times -->
+<!-- https://www.sfdcpoint.com/salesforce/foreach-template-directives-in-lwc/ -->

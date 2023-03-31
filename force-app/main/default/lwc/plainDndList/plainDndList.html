@@ -1,0 +1,9 @@
+<template>
+    <ul class="droppable drop-container" ondragover={handleDragOver} ondrop={handleDrop}>
+        <p class="field-title">{category}</p>
+        <template for:each={tasklist} for:item="task">
+            <c-plain-dnd-item key={task.taskid} task={task} onitemdragstart={handleItemDragStart}>
+            </c-plain-dnd-item>
+        </template>
+    </ul>
+</template>

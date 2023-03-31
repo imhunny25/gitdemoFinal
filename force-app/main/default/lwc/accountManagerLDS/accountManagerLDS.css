@@ -1,0 +1,4 @@
+.colorchangeicon{
+    --sds-c-icon-color-foreground: red;
+    --sds-c-icon-color-background: blue;
+}

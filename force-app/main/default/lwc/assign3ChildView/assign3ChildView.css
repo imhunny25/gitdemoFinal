@@ -1,0 +1,40 @@
+.card_style{
+    width: 1%;
+    height: auto;
+    text-align: center;
+    border: 1px solid #747474;
+    border-radius: 0%;
+    display: table-cell;
+}
+.border_spiceal{
+    border: 1 px solid #747474;
+}
+.header_background{
+    background-color: #0176d3;
+    width: 100%;
+    height: 30px;}
+    
+.header_background span{
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    padding-top: 5px;
+}
+.align_contant{
+    display: inline;
+}
+
+.contant_display{
+    display: table-cell;
+}
+
+.width_of_div{
+    width: 300px;
+}
+
+
+.over{
+    border-style: 3px solid dotted;
+    border-color: green;
+  
+}

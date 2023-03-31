@@ -1,0 +1,55 @@
+<template>
+    <article class="slds-card lightning_background">
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_3-of-12 ">
+            <div class="slds-grid slds-grid_vertical ">
+                <div class="slds-col align_center">
+                    <button class="slds-button button_width" onclick={handleraccount}>Account</button>
+                </div>
+                <div class="slds-col align_center">
+                    <button class="slds-button button_width" onclick={handlercontact}>Contact</button>
+                </div>
+                <div class="slds-col align_center">
+                    <button class="slds-button button_width" onclick={handleroppertunity}>Opportunity</button>
+                </div>
+            </div>
+        </div>
+        <div class="slds-col slds-size_3-of-12">
+            <div class="slds-box box_design">
+                <h2>Total Accounts</h2>
+                <h1><span>{totalAccount}</span></h1>
+            </div>
+        </div>
+            <div class="slds-col slds-size_3-of-12">
+                <div class="slds-box box_design">
+                    <h2>Total Contacts</h2>
+                    <h1><span>{totalContact}</span></h1>
+                </div>
+            </div>
+            <div class="slds-col slds-size_3-of-12">
+                <div class="slds-box box_design">
+                    <h2>Total Opportunities</h2>
+                    <h1><span>{totalOpportunity}</span></h1>
+                </div>
+            </div>
+    </div>
+
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col">
+            <c-record-new-edit-delete onhandlerefresh={refreshHandle} isaccountnew={isAccount} iscontactnew={isContact} isopportunitynew={isOpportunity} totalselectrecord={totalSelectedRows}></c-record-new-edit-delete>
+        </div>
+    </div>
+
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col">
+            <lightning-card title={display}>
+                <template if:true={isChildCall}>
+                    <!-- recordchilddatatable -->
+                    <c-record-child-data-table tabledata={data} columns={columns} onselectrecord={selectRows}></c-record-child-data-table>
+                    <!-- ------------------------ -->
+                </template>
+            </lightning-card>
+        </div>
+    </div>
+        </article>
+</template>

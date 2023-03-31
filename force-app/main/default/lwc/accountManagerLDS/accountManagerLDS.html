@@ -1,0 +1,36 @@
+<template>
+    <lightning-card title="Account Manager">
+        <lightning-layout>
+            <lightning-layout-item size="5">
+                <lightning-card title="Create Account" icon-name="standard:account" alternative-text="account">
+                    <lightning-input name="Account Name" label="Name" type="text" onchange={accountNameHandler}></lightning-input>
+                    <lightning-input name="Account Phone" label="Phone" type="Phone" onchange={accountPhoneHandler}></lightning-input>
+                    <lightning-input name="Account Website" label="Website" type="url" onchange={accountWebsiteHandler}></lightning-input>
+                    <lightning-button variant="brand" icon-name="utility:save" label="Save" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+                </lightning-card>
+            </lightning-layout-item>
+            <lightning-layout-item size="2"></lightning-layout-item>
+            <lightning-layout-item size="5">
+                <lightning-card title="Create Contact" icon-name="standard:contact" alternative-text="contact">
+                    <lightning-input label="First Name" type="text" onchange={contactFirstnameHandler}></lightning-input>
+                    <lightning-input label="Last Name" type="text" onchange={contactLastnameHandler}></lightning-input>
+                    <lightning-input label="Phone" type="phone" onchange={contactPhoneHandler}></lightning-input>
+                    <lightning-button variant="brand" icon-name="utility:save" label="Save" title="Primary action" onclick={handleContact} class="slds-m-left_x-small "></lightning-button>
+                    <lightning-icon class="colorchangeicon" icon-name="utility:smiley_and_people" size="large"></lightning-icon>
+                </lightning-card>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+    <lightning-card title="salesforce static resource">
+        <lightning-layout>
+            <lightning-layout-item size="4">
+                <img src={salesforcelogourl}/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">;
+                    <use xlink:href={svgURL}></use>
+                </svg>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>
+
+<!-- --lwc-colorTextIconDefault: yellow; -->

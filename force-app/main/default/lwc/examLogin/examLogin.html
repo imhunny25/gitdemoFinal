@@ -1,0 +1,192 @@
+<template>
+    <template if:true={isLogin}>
+<lightning-card>
+    <lightning-layout>
+        <lightning-layout-item size="12">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-align_absolute-center">
+                    <div class="slds-box" style="width:35% ;">
+                        <div class=" slds-p-top_large">
+                            <h1 class="login_h1">LOGIN </h1>
+                        </div>
+                        <div>
+                            <div class="slds-p-top_large lgc-bg">
+                                <lightning-input type="text" label="Email"></lightning-input>
+                            </div>
+                            <div class="slds-p-top_large lgc-bg">
+                                <lightning-input type="text" label="Password"></lightning-input>
+                            </div>
+                            <div class="slds-p-top_small lgc-bg">
+                                <div class="slds-checkbox">
+                                    <input type="checkbox" name="options" id="checkbox-unique-id-81" value="checkbox-unique-id-81" checked="" />
+                                    <label class="slds-checkbox__label" for="checkbox-unique-id-81">
+                                      <span class="slds-checkbox_faux"></span>
+                                      <span class="slds-form-element__label slds-p-left_small"> Remember Me</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="slds-align_absolute-center slds-p-top_large">
+                                <button class="button2" onclick={handleClick}>LOGIN</button>
+                            </div>
+                            <div class="slds-border_bottom slds-float_right" style="width: 100%;">
+                                <a href="#" class="slds-text-link_reset slds-p-top_small"><span class="slds-text-link_faux slds-float_right ">Forgot Password ?</span></a>
+                            </div>
+                        </div>
+
+                        <div class="icon_center slds-m-top_large slds-align_absolute-center">
+                            <ul class="slds-list_horizontal slds-m-top_large ">
+                                <li class="slds-m-horizontal_small">
+                                    <img alt="Person name"  src={facebookIcon} title="facebook" />
+                                </li>
+                                <li class="slds-m-horizontal_small">
+                                    <img alt="Person name"  src={twitterIcon} title="twitter" />
+                                </li>
+                                <li class="slds-m-horizontal_small">
+                                    <img alt="Person name" class="green-world" src={youtubeIcon} title="youtube" />
+                                </li>
+                              </ul>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </lightning-layout-item>
+    </lightning-layout>
+</lightning-card>
+</template>
+<template if:true={isExam}>
+    <lightning-card title="">
+        <lightning-layout>
+            <lightning-layout-item size="2">
+               <div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg" class="logo_size" />
+               </div>
+            </lightning-layout-item>
+
+        <lightning-layout-item size="9">
+            <div class="header_list">
+                <ul class="slds-list_horizontal">
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">HOME</button>
+                            <div class="dropdown-content">
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                            </div>
+                        </div>
+                    </li>
+                        <li>
+                            <div class="dropdown">
+                                <button class="dropbtn">ABOUT</button>
+                                <div class="dropdown-content">
+                                    <a href="#">About Me</a>
+                                    <a href="#">About Company</a>
+                                    <a href="#">About Customers</a>
+                                </div>
+                            </div>
+                          </li>
+                        <li>
+                            <div class="dropdown">
+                                <button class="dropbtn">PROJECT</button>
+                                <div class="dropdown-content">
+                                    <a href="#">Persnol Project</a>
+                                    <a href="#">Company Project</a>
+                                    <a href="#">Freelance Project</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                          <a href="#">PROFILE</a>
+                        </li>
+                        
+                      </ul>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="1">
+                <div class="header_list1">
+                    <ul class="slds-list_horizontal">
+                        <li>
+                            <span class="slds-avatar slds-avatar_circle " style="border: 1px solid #00a1e0;">
+                                <img alt="Person name"  src={imgUrl} title="Person name" />
+                              </span>
+                          </li>
+                        </ul>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+
+    <lightning-card>
+        <lightning-layout>
+            <lightning-layout-item size="7">
+            <div class="slds-align_absolute-center">
+                <div class="slds-box" style="width: 500px;">
+                    <div class="Exam_heading">
+                        <h1>Exams</h1>
+                    </div>
+                    <div class="list_decoration slds-p-top_small">
+                        <template if:true={examName}>
+                            <template for:each={examName} for:item="exName">
+                        <ul key={exName.Id} class="slds-p-top_small">
+                            <li>
+                                <div class="slds-box slds-box_large exam_name ">
+                                    <lightning-layout>
+                                        <lightning-layout-item size="1">
+                                            <div class="slds-p-top_xx-small slds-p-left_large">
+                                                <lightning-icon
+                                                icon-name="standard:app"
+                                                size="small"
+                                                alternative-text="Indicates approval"
+                                                ></lightning-icon>
+                                             </div>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item size="3">
+                                            <!-- <lightning-icon icon-name="standard :assignment"></lightning-icon> -->
+                                            <h1 class=" slds-p-left_large">{exName.Name}</h1>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item size="8">
+                                            <div class="lgc-bg slds-float_right">
+                                                <lightning-button-icon icon-name="utility:edit"  variant="border-filled" alternative-text="Settings" title="Settings" onclick={isQuestionPageHandler} data-id={exName.Id}></lightning-button-icon>
+                                                
+                                            </div>
+                                        </lightning-layout-item>
+
+                                    </lightning-layout>
+                                </div>
+                            </li>
+                           
+                          </ul>
+                        </template>
+                        </template>
+                    </div>
+                </div>
+            </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="4">
+               
+                <div class="slds-box slds-p-right_large">
+                 <div class="heading_right"><h1>About Exam</h1>
+                    <p>
+                        What is Lorem Ipsum?
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book. It has survived not only five centuries, but also the leap
+                        into electronic typesetting, remaining essentially unchanged. It was 
+                        popularised in the 1960s with the release of Letraset sheets containing
+                        Lorem Ipsum passages, and more recently with desktop publishing software 
+                        like Aldus PageMaker including versions of Lorem Ipsum.
+                    </p>
+                 </div>   
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="1"></lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+
+</template>
+<template if:true={isQuestion}>
+    <c-question-compo examid={examId}></c-question-compo>
+</template>
+</template>
+<!-- https://hicglobalsolutions.com/blog/how-to-create-a-custom-login-and-signup-page-using-lwc-for-the-salesforce-community/ -->

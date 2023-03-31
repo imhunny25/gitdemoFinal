@@ -1,0 +1,32 @@
+<template>
+    <article class="slds-card" style="min-height :500px" >
+        <div class="slds-grid slds-card__header">
+        </div>
+
+        <div class="slds-card__body slds-card__body_inner " style="text-align:center;">
+            <div class="lingtning_width">
+                <lightning-combobox
+                name="progress"
+                label="Status"
+                value={value}
+                placeholder="---none---"
+                options={options}
+                onchange={handleChange} ></lightning-combobox>
+            </div>
+           
+        </div>
+        <div class="card_style" style="max-height: 450px;">
+            <div class="display_scroll">
+            <template if:true={isChildView}>
+            <c-assign3-child-view combo-val={value} is-stage-view={isStage} is-type-view={isType} is-status-view={isStatus} ></c-assign3-child-view>
+            </template>
+        </div>
+        </div>
+
+        <footer class="slds-card__footer">
+            <!-- <a class="slds-card__footer-action" href="#">View All
+            <span class="slds-assistive-text">Einstein Recommendations</span>
+            </a> -->
+        </footer>
+    </article>
+</template>

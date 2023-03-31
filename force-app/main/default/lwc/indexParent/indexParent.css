@@ -1,0 +1,25 @@
+.button_style{
+    width: 150%;
+    margin-top: 5px;
+}
+.card_height_style{
+    height: 110px;
+    margin-top: 20px;
+}
+.heading_text{
+    font-size: 20px;
+    font-weight: 700px;
+    text-align: center;
+    
+}
+.group_button{
+    float: right;
+    margin-top: 7px;
+}
+.data_top_margin{
+    margin-top: 7px;
+}
+.myColor{
+  background-color: rgb(243 243 243) ;
+  border-radius: 10px;
+}

@@ -1,0 +1,20 @@
+<template>
+    <div class="container-drag slds-text-heading_medium slds-align_absolute-center">
+        Drag & Drop Sample with Animation
+    </div>
+    <lightning-layout>
+    	<lightning-layout-item padding="around-small">
+            <c-dnd-list tasklist={leftTasks} category="wip" onlistitemdrag={handleListItemDrag} 
+            onitemdrop={handleItemDrop}
+            onmousehover={handleMouseHover}>
+            </c-dnd-list>
+        </lightning-layout-item>
+    
+        <lightning-layout-item padding="around-small">
+            <c-dnd-list tasklist={rightTasks} category="complete" onlistitemdrag={handleListItemDrag}
+            onitemdrop={handleItemDrop}
+            onmousehover={handleMouseHover}>
+            </c-dnd-list>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>
